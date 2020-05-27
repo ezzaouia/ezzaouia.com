@@ -2,7 +2,7 @@
   "name": "overreacted",
   "private": true,
   "engines": {
-    "node": "13"
+    "node": "12.x"
   },
   "description": "Overreacted",
   "version": "1.0.0",
