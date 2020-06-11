@@ -20,15 +20,15 @@ class BlogIndexTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO />
-        <aside>
+        {/* <aside>
           <Bio />
-        </aside>
+        </aside> */}
         <main>
-          {langKey !== 'en' && langKey !== 'ru' && (
+          {langKey !== 'en' && (
             <Panel>
               These articles have been{' '}
               <a
-                href="https://github.com/gaearon/overreacted.io#contributing-translations"
+                href="https://github.com/ezzaouia/ezzaouia.com#contributing-translations"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -87,7 +87,10 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fields: { langKey: { eq: $langKey } } }
+      filter: { fields: { 
+        langKey: { eq: $langKey } }, 
+        fileAbsolutePath: {regex: "/blog/.*\\.md$/"} 
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

@@ -1,32 +1,38 @@
 {
-  "name": "overreacted",
+  "name": "ezzaouia",
   "private": true,
   "engines": {
     "node": "13"
   },
-  "description": "Overreacted",
+  "description": "ezzaouia.com",
   "version": "1.0.0",
-  "author": "Dan Abramov <dan.abramov@me.com>",
+  "author": "Mohamed Ezzaouia <ezzaouia@com>",
   "bugs": {
-    "url": "https://github.com/gaearon/overreacted.io/issues"
+    "url": "https://github.com/ezzaouia/ezzaouia.com/issues"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^1.6.5",
+    "@mdx-js/react": "^1.6.5",
     "gatsby": "^2.0.76",
+    "gatsby-image": "^2.4.6",
     "gatsby-plugin-catch-links": "^2.0.9",
     "gatsby-plugin-ebook": "^1.0.2",
     "gatsby-plugin-feed": "^2.0.8",
     "gatsby-plugin-google-analytics": "^2.0.5",
     "gatsby-plugin-i18n": "^0.4.2",
     "gatsby-plugin-manifest": "^2.0.5",
+    "gatsby-plugin-mdx": "^1.2.14",
     "gatsby-plugin-offline": "^2.0.5",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sharp": "^2.0.16",
     "gatsby-plugin-typography": "^2.2.0",
     "gatsby-remark-autolink-headers": "2.0.12",
-    "gatsby-remark-copy-linked-files": "^2.0.5",
+    "gatsby-remark-code-buttons": "^2.0.4",
+    "gatsby-remark-copy-linked-files": "^2.3.4",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^2.0.6",
-    "gatsby-remark-prismjs": "^3.0.0",
+    "gatsby-remark-numbered-footnotes": "^1.0.1",
+    "gatsby-remark-prismjs": "^3.5.3",
     "gatsby-remark-responsive-iframe": "^2.0.5",
     "gatsby-remark-smartypants": "^2.0.5",
     "gatsby-source-filesystem": "^2.0.12",
@@ -35,11 +41,14 @@
     "husky": "^1.3.1",
     "lint-staged": "^8.1.0",
     "lodash": "^4.17.11",
+    "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.15.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
+    "react-live": "^2.2.2",
     "react-typography": "^0.16.13",
+    "styled-components": "^5.1.1",
     "typography": "^0.16.17",
     "typography-theme-wordpress-2016": "^0.15.10"
   },
@@ -50,7 +59,7 @@
     "glob": "^7.1.3",
     "prettier": "^1.14.2"
   },
-  "homepage": "https://overreacted.io",
+  "homepage": "https://ezzaouia.com",
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop",

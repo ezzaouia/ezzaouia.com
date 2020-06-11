@@ -16,9 +16,8 @@ import {
   loadFontsForCode,
   replaceAnchorLinksByLanguage,
 } from '../utils/i18n';
+import Brand from '../components/Brand';
 
-const GITHUB_USERNAME = 'gaearon';
-const GITHUB_REPO_NAME = 'overreacted.io';
 const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif`;
@@ -94,7 +93,10 @@ class Translations extends React.Component {
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const { title: siteTitle, githubReponame, githubUsername, siteUrl } = get(
+      this.props,
+      'data.site.siteMetadata'
+    );
     let {
       previous,
       next,
@@ -132,12 +134,12 @@ class BlogPostTemplate extends React.Component {
     // TODO: this curried function is annoying
     const languageLink = createLanguageLink(slug, lang);
     const enSlug = languageLink('en');
-    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
+    const editUrl = `https://github.com/${githubUsername}/${githubReponame}/edit/master/src/pages/${enSlug.slice(
       1,
       enSlug.length - 1
     )}/index${lang === 'en' ? '' : '.' + lang}.md`;
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://overreacted.io${enSlug}`
+      `${siteUrl}${enSlug}`
     )}`;
 
     return (
@@ -195,25 +197,9 @@ class BlogPostTemplate extends React.Component {
               fontFamily: systemFont,
             }}
           >
-            <Signup cta={post.frontmatter.cta} />
+            <Signup />
           </div>
-          <h3
-            style={{
-              fontFamily: 'Montserrat, sans-serif',
-              marginTop: rhythm(0.25),
-            }}
-          >
-            <Link
-              style={{
-                boxShadow: 'none',
-                textDecoration: 'none',
-                color: 'var(--pink)',
-              }}
-              to={'/'}
-            >
-              Overreacted
-            </Link>
-          </h3>
+          <Brand style={{ marginBottom: rhythm(1) }} />
           <Bio />
           <nav>
             <ul
@@ -269,7 +255,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         spoiler
-        cta
       }
       fields {
         slug

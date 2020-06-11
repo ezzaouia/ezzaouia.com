@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const Promise = require('bluebird');
 const path = require('path');
-const { createFilePath } = require('gatsby-source-filesystem');
+// const { createFilePath } = require('gatsby-source-filesystem');
 const { supportedLanguages } = require('./i18n');
 
 exports.createPages = ({ graphql, actions }) => {
@@ -30,17 +30,23 @@ exports.createPages = ({ graphql, actions }) => {
   });
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js');
-
     // Create index pages for all supported languages
     Object.keys(supportedLanguages).forEach(langKey => {
-      createPage({
-        path: langKey === 'en' ? '/' : `/${langKey}/`,
-        component: path.resolve('./src/templates/blog-index.js'),
-        context: {
-          langKey,
-        },
-      });
+      _.each(
+        ['research', 'blog', 'papers', 'books', 'thesis', 'bio', 'cv'],
+        (content, _) => {
+          // research is the landing page
+          const url = content === 'research' ? '' : content;
+          createPage({
+            path: langKey === 'en' ? `/${url}` : `/${langKey}/${url}`,
+            component: path.resolve(`./src/templates/${content}-index.js`),
+            context: {
+              langKey,
+              slug: content === 'cv' ? '/cv/curriculum-vitae/' : null,
+            },
+          });
+        }
+      );
     });
 
     resolve(
@@ -62,6 +68,7 @@ exports.createPages = ({ graphql, actions }) => {
                   frontmatter {
                     title
                   }
+                  fileAbsolutePath
                 }
               }
             }
@@ -100,7 +107,7 @@ exports.createPages = ({ graphql, actions }) => {
             return result;
           },
           {}
-        );
+        ); // end reduce
 
         const defaultLangPosts = posts.filter(
           ({ node }) => node.fields.langKey === 'en'
@@ -118,7 +125,7 @@ exports.createPages = ({ graphql, actions }) => {
 
           createPage({
             path: post.node.fields.slug,
-            component: blogPost,
+            component: postComponent(_.get(post, 'node.fileAbsolutePath')),
             context: {
               slug: post.node.fields.slug,
               previous,
@@ -131,6 +138,8 @@ exports.createPages = ({ graphql, actions }) => {
           const otherLangPosts = posts.filter(
             ({ node }) => node.fields.langKey !== 'en'
           );
+
+          // create other lang pages
           _.each(otherLangPosts, post => {
             const translations =
               translationsByDirectory[_.get(post, 'node.fields.directoryName')];
@@ -159,7 +168,7 @@ exports.createPages = ({ graphql, actions }) => {
 
             createPage({
               path: post.node.fields.slug,
-              component: blogPost,
+              component: postComponent(_.get(post, 'node.fileAbsolutePath')),
               context: {
                 slug: post.node.fields.slug,
                 translations,
@@ -167,8 +176,8 @@ exports.createPages = ({ graphql, actions }) => {
               },
             });
           });
-        });
-      })
+        }); // end each
+      }) // end then
     );
   });
 };
@@ -202,5 +211,33 @@ exports.onCreateNode = ({ node, actions }) => {
       name: 'maybeAbsoluteLinks',
       value: _.uniq(maybeAbsoluteLinks),
     });
+  }
+};
+
+const postComponent = fileAbsolutePath => {
+  switch (true) {
+    case !!fileAbsolutePath.match(/\/research\/.*\.md$/):
+      return path.resolve('./src/templates/research-post.js');
+
+    case !!fileAbsolutePath.match(/\/blog\/.*\.md$/):
+      return path.resolve('./src/templates/blog-post.js');
+
+    case !!fileAbsolutePath.match(/\/papers\/.*\.md$/):
+      return path.resolve('./src/templates/papers-post.js');
+
+    case !!fileAbsolutePath.match(/\/books\/.*\.md$/):
+      return path.resolve('./src/templates/books-post.js');
+
+    case !!fileAbsolutePath.match(/\/thesis\/.*\.md$/):
+      return path.resolve('./src/templates/thesis-post.js');
+
+    case !!fileAbsolutePath.match(/\/bio\/.*\.md$/):
+      return path.resolve('./src/templates/bio-post.js');
+
+    case !!fileAbsolutePath.match(/\/cv\/.*\.md$/):
+      return path.resolve('./src/templates/cv-post.js');
+
+    default:
+      return path.resolve('./src/templates/research-post.js');
   }
 };

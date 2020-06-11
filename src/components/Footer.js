@@ -17,7 +17,7 @@ class Footer extends React.Component {
           </a>
         </div>
         <a
-          href="https://mobile.twitter.com/dan_abramov"
+          href="https://twitter.com/mohamedezzawia"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -25,7 +25,7 @@ class Footer extends React.Component {
         </a>{' '}
         &bull;{' '}
         <a
-          href="https://github.com/gaearon"
+          href="https://github.com/ezzaouia"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -33,11 +33,11 @@ class Footer extends React.Component {
         </a>{' '}
         &bull;{' '}
         <a
-          href="https://stackoverflow.com/users/458193/dan-abramov"
+          href="https://scholar.google.com/citations?hl=en&user=Du2qhm8AAAAJ"
           target="_blank"
           rel="noopener noreferrer"
         >
-          stack overflow
+          google scholar
         </a>
       </footer>
     );

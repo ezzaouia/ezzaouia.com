@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import Toggle from './Toggle';
 import Helmet from 'react-helmet';
 
-import { rhythm, scale } from '../utils/typography';
+import Brand from './Brand';
+import Navbar from './Navbar';
+import Bio from './Bio';
+import { rhythm } from '../utils/typography';
 import sun from '../assets/sun.png';
 import moon from '../assets/moon.png';
 
@@ -16,56 +18,6 @@ class Layout extends React.Component {
     window.__onThemeChange = () => {
       this.setState({ theme: window.__theme });
     };
-  }
-  renderHeader() {
-    const { location, title } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
-
-    if (location.pathname === rootPath) {
-      return (
-        <h1
-          style={{
-            ...scale(0.75),
-            marginBottom: 0,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'var(--textTitle)',
-            }}
-            to={'/'}
-          >
-            {title}
-          </Link>
-        </h1>
-      );
-    } else {
-      return (
-        <h3
-          style={{
-            fontFamily: 'Montserrat, sans-serif',
-            marginTop: 0,
-            marginBottom: 0,
-            height: 42, // because
-            lineHeight: '2.625rem',
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'rgb(255, 167, 196)',
-            }}
-            to={'/'}
-          >
-            {title}
-          </Link>
-        </h3>
-      );
-    }
   }
   render() {
     const { children } = this.props;
@@ -103,13 +55,13 @@ class Layout extends React.Component {
               marginBottom: '2.625rem',
             }}
           >
-            {this.renderHeader()}
+            <Brand />
             {this.state.theme !== null ? (
               <Toggle
                 icons={{
                   checked: (
                     <img
-                      src={moon}
+                      src={sun}
                       width="16"
                       height="16"
                       role="presentation"
@@ -118,7 +70,7 @@ class Layout extends React.Component {
                   ),
                   unchecked: (
                     <img
-                      src={sun}
+                      src={moon}
                       width="16"
                       height="16"
                       role="presentation"
@@ -137,6 +89,10 @@ class Layout extends React.Component {
               <div style={{ height: '24px' }} />
             )}
           </header>
+          <aside>
+            <Bio />
+            <Navbar location={this.props.location} />
+          </aside>
           {children}
         </div>
       </div>

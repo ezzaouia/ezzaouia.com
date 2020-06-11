@@ -1,27 +1,54 @@
 module.exports = {
   siteMetadata: {
     title: 'Welcome',
-    author: 'Mohamed Ezzaouia',
+    author: 'Mohamed Ez-zaouia',
     description:
-      'Personal spot by Mohamed Ezzaouia. I study and design technologies for education.',
+      'Personal log by Mohamed Ez-zaouia. I study and design teaching and learning technologies for better experiences and outcomes.',
     siteUrl: 'https://ezzaouia.com',
     social: {
       twitter: '@ezzaouia',
     },
+    navbar: [
+      { name: 'research', to: '/' },
+      { name: 'papers', to: '/papers/' },
+      { name: 'blog', to: '/blog/' },
+      { name: 'thesis', to: '/thesis/' },
+      { name: 'bio', to: '/bio/' },
+      { name: 'cv', to: '/cv/' },
+    ],
+    githubReponame: 'ezzaouia.com',
+    githubUsername: 'ezzaouia',
   },
   pathPrefix: '/',
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/src/pages/`,
         name: 'pages',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/`,
+        name: 'assets',
       },
     },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: 'gatsby-remark-code-buttons',
+            options: {
+              buttonText: `Copy`,
+              // Optional svg icon. Defaults to svg string and can be
+              // replaced with any other valid svg. Use custom classes
+              // in the svg string and skip `iconClass` option.
+              svgIcon: ` `,
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -39,6 +66,7 @@ module.exports = {
             resolve: 'gatsby-remark-prismjs',
             options: {
               inlineCodeMarker: '÷',
+              showLineNumbers: true,
             },
           },
           'gatsby-remark-copy-linked-files',
@@ -49,6 +77,7 @@ module.exports = {
               target: '_blank',
             },
           },
+          'gatsby-remark-numbered-footnotes',
         ],
       },
     },
@@ -81,7 +110,7 @@ module.exports = {
               return allMarkdownRemark.edges.map(edge => {
                 const siteUrl = site.siteMetadata.siteUrl;
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(This is an article posted to my blog at overreacted.io. You can read it online by <a href="${siteUrl +
+                <div style="margin-top=55px; font-style: italic;">(This is an article posted to my log at ezzaouia.io. You can read it online by <a href="${siteUrl +
                   edge.node.fields.slug}">clicking here</a>.)</div>
               `;
 
@@ -127,7 +156,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: "Dan Abramov's Overreacted Blog RSS Feed",
+            title: "Mohamed Ez-zaouia's *log RSS Feed",
           },
         ],
       },
@@ -135,7 +164,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-ebook`,
       options: {
-        filename: 'overreacted-ebook.epub',
+        filename: 'mohamed-ezzaouia-ebook.epub',
         query: `
           {
             site {
@@ -166,8 +195,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Overreacted`,
-        short_name: `Overreacted`,
+        name: `Ez-zaouia`,
+        short_name: `Ez-zaouia`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ffa7c4`,
