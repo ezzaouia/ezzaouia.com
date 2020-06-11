@@ -234,8 +234,8 @@ const postComponent = fileAbsolutePath => {
     case !!fileAbsolutePath.match(/\/bio\/.*\.md$/):
       return path.resolve('./src/templates/bio-post.js');
 
-    case !!fileAbsolutePath.match(/\/cv\/.*\.md$/):
-      return path.resolve('./src/templates/cv-post.js');
+    // case !!fileAbsolutePath.match(/\/cv\/.*\.md$/):
+    //   return path.resolve('./src/templates/cv-post.js');
 
     default:
       return path.resolve('./src/templates/research-post.js');
