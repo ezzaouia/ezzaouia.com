@@ -71,3 +71,7 @@ yarn-error.log
 
 # Webstorm
 .idea
+
+# Env
+.env.development
+.env.production
