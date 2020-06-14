@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Signup.css';
 
-const SIGN_UP_FORM_ID = process.env.SIGN_UP_FORM_ID;
+const SIGN_UP_FORM_ID = process.env.GATSBY_SIGN_UP_FORM_ID;
 
 class Signup extends React.Component {
   render() {
