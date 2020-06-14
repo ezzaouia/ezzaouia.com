@@ -94,7 +94,10 @@ class Translations extends React.Component {
 class BooksPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const { title: siteTitle, githubReponame, githubUsername, siteUrl } = get(
+      this.props,
+      'data.site.siteMetadata'
+    );
     let {
       previous,
       next,
@@ -259,6 +262,9 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        githubReponame
+        githubUsername
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
