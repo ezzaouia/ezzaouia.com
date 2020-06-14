@@ -2,31 +2,17 @@ import React from 'react';
 
 import './Signup.css';
 
-const REACT_COMPONENTS_FORM_ID = '1454511';
-const OVERREACTED_FORM_ID = '1454511';
+const SIGN_UP_FORM_ID = process.env.SIGN_UP_FORM_ID;
 
 class Signup extends React.Component {
   render() {
-    let form,
-      { cta } = this.props;
-    switch (cta) {
-      case 'react':
-        form = {
-          id: REACT_COMPONENTS_FORM_ID,
-          title: 'Learn to Build Resilient React Components',
-          subTitle:
-            'Get a one week email course and learn how I think about writing React components based on 4 Principles.',
-          buttonText: 'Start Learning',
-        };
-        break;
-      default:
-        form = {
-          id: OVERREACTED_FORM_ID,
-          title: 'Subscribe to the Newsletter',
-          subTitle: 'Subscribe to get my latest content by email.',
-          buttonText: 'Subscribe',
-        };
-    }
+    let form = {
+      id: SIGN_UP_FORM_ID,
+      title: 'Join the Community',
+      subTitle: 'Subscribe to get my latest content by email.',
+      buttonText: 'Connect',
+    };
+
     return (
       <form
         action={`https://app.convertkit.com/forms/${form.id}/subscriptions`}
