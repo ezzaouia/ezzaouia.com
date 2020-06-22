@@ -2,9 +2,9 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-function Image({ name = '', alt = '', style = {} }) {
+function Image({ name = '', alt = '' }) {
   const images = useStaticQuery(graphql`
-    query MyQuery {
+    query ImagesQuery {
       allFile(filter: {absolutePath: { regex: "/assets/.*\\.jpg$/" }}) {
         edges {
           node {
