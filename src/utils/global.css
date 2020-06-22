@@ -257,11 +257,6 @@ pre[data-line] {
   min-width: 100%;
 }
 
-nav ul li {
-  margin-right: 0.75em;
-  margin-left: 0.75em;
-}
-
 blockquote cite {
   color: var(--textTitle);
 }
@@ -287,4 +282,17 @@ blockquote cite {
 }
 .gatsby-code-button:after {
   content: none;
+}
+
+
+@media (max-width: 450px) {
+  nav ul li {
+    flex-basis: 33%;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 650px) {
+  nav ul li {
+    flex-basis: 25%;
+  }
 }

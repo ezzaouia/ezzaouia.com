@@ -1,52 +1,28 @@
 const _ = require('lodash');
 const Promise = require('bluebird');
 const path = require('path');
-// const { createFilePath } = require('gatsby-source-filesystem');
+
 const { supportedLanguages } = require('./i18n');
+const { siteMetadata } = require('./gatsby-config');
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions;
-
-  // Oops
-  createRedirect({
-    fromPath: '/zh_TW/things-i-dont-know-as-of-2018/',
-    toPath: '/zh-hant/things-i-dont-know-as-of-2018/',
-    isPermanent: true,
-    redirectInBrowser: true,
-  });
-  // Oops 2
-  createRedirect({
-    fromPath: '/not-everything-should-be-a-hook/',
-    toPath: '/why-isnt-x-a-hook/',
-    isPermanent: true,
-    redirectInBrowser: true,
-  });
-  // Oops 3
-  createRedirect({
-    fromPath: '/making-setinterval-play-well-with-react-hooks/',
-    toPath: '/making-setinterval-declarative-with-react-hooks/',
-    isPermanent: true,
-    redirectInBrowser: true,
-  });
+  const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
     // Create index pages for all supported languages
     Object.keys(supportedLanguages).forEach(langKey => {
-      _.each(
-        ['research', 'blog', 'papers', 'books', 'thesis', 'bio', 'cv'],
-        (content, _) => {
-          // research is the landing page
-          const url = content === 'research' ? '' : content;
-          createPage({
-            path: langKey === 'en' ? `/${url}` : `/${langKey}/${url}`,
-            component: path.resolve(`./src/templates/${content}-index.js`),
-            context: {
-              langKey,
-              slug: content === 'cv' ? '/cv/curriculum-vitae/' : null,
-            },
-          });
-        }
-      );
+      _.each(siteMetadata.navbar, link => {
+        // research is the landing page
+        // const url = content === 'research' ? '' : content;
+        createPage({
+          path: langKey === 'en' ? `${link.to}` : `/${langKey}${link.to}`,
+          component: path.resolve(`./src/templates/${link.name}-index.js`),
+          context: {
+            langKey,
+            slug: link.name === 'cv' ? '/cv/curriculum-vitae/' : null,
+          },
+        });
+      });
     });
 
     resolve(

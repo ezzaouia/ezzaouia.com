@@ -1,47 +1,77 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
-
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import { startsWith, isEqual, get } from 'lodash';
 import { rhythm, scale } from '../utils/typography';
 
-class Navbar extends React.Component {
-  render() {
-    const links = [
-      { name: 'research', to: '/' },
-      { name: 'papers', to: '/papers/' },
-      { name: 'blog', to: '/blog/' },
-      { name: 'thesis', to: '/thesis/' },
-      { name: 'bio', to: '/bio/' },
-      { name: 'cv', to: '/cv/' },
-    ];
-    const { pathname } = this.props.location;
+function Navbar({ location }) {
+  const data = useStaticQuery(graphql`
+    query NavbarQuery {
+      site {
+        siteMetadata {
+          navbar {
+            name
+            to
+          }
+        }
+      }
+    }
+  `);
+  const links = get(data, 'site.siteMetadata.navbar', []);
+  const pathname = get(location, 'pathname', '');
 
+  const isPathnameActive = (pathname, link) => {
     return (
-      <nav style={{ marginBottom: rhythm(1 / 2) }}>
-        <ul style={{ ...scale(1 / 4), display: 'flex', flexWrap: 'wrap' }}>
-          {links.map(link => (
-            <li key={link.name}>
-              <Link
-                to={link.to}
-                partiallyActive={true}
-                activeStyle={
-                  link.to === '/' && pathname !== '/'
-                    ? {}
-                    : {
-                        backgroundImage: `
-                      linear-gradient(180deg, transparent 65%, #007acc)`,
-                        backgroundSize: '100% 100%',
-                        backgroundRepeat: 'no-repeat',
-                      }
-                }
-              >
-                &nbsp;{link.name}&nbsp;
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      (startsWith(pathname, link) && !isEqual(link, '/')) ||
+      (isEqual(pathname, '/') && isEqual(link, '/')) ||
+      (startsWith(pathname, '/research/') && isEqual(link, '/'))
     );
-  }
+  };
+
+  return (
+    <nav style={{ marginBottom: rhythm(1 / 2) }}>
+      <ul
+        style={{
+          ...scale(1 / 4),
+          display: 'flex',
+          flexWrap: 'wrap',
+          listStyleType: 'none',
+        }}
+      >
+        {links.map(link => (
+          <li
+            key={link.name}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginRight: rhythm(1),
+            }}
+          >
+            <span
+              style={
+                isPathnameActive(pathname, link.to)
+                  ? {
+                      fontSize: rhythm(0.7),
+                      color: 'var(--textNormal)',
+                      transition: 'color 0.3s ease',
+                      marginRight: rhythm(0.25),
+                    }
+                  : {
+                      fontSize: rhythm(2 * 0.7),
+                      marginRight: rhythm(0.20),
+                      color: 'var(--theme-color)',
+                    }
+              }
+            >
+              {isPathnameActive(pathname, link.to) ? ' ⊙ ' : ' • '}
+            </span>
+            <Link to={link.to} partiallyActive={true}>
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 }
 
 export default Navbar;

@@ -7,11 +7,14 @@ module.exports = {
     title: 'Mohamed Ez-zaouia',
     author: 'Mohamed Ez-zaouia',
     description:
-      'Personal log by Mohamed Ez-zaouia. I study and design teaching and learning technologies for better experiences and outcomes.',
+      'Personal *log by <strong style="white-space: nowrap;">Mohamed Ez-zaouia</strong>.<br />I study and design teaching and learning technologies for better experiences and outcomes.',
     siteUrl: 'https://ezzaouia.com',
-    social: {
-      twitter: '@ezzaouia',
-    },
+    social: { twitter: '@mohamedezzawia' },
+    socialbar: [
+      { name: 'twitter', id: 'mohamedezzawia' },
+      { name: 'github', id: 'ezzaouia' },
+      { name: 'google scholar', id: 'Mohamed Ez-zaouia' },
+    ],
     navbar: [
       { name: 'research', to: '/' },
       { name: 'papers', to: '/papers/' },
