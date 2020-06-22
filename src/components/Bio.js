@@ -1,35 +1,46 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+
 import profilePic from '../assets/mohamed.jpg';
 import { rhythm } from '../utils/typography';
 
-class Bio extends React.Component {
-  render() {
-    return (
-      <div
+function Bio({}) {
+  const data = useStaticQuery(graphql`
+    query BioQuery {
+      site {
+        siteMetadata {
+          description
+        }
+      }
+    }
+  `);
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        marginBottom: rhythm(1.5),
+      }}
+    >
+      <img
+        src={profilePic}
+        alt={`Mohamed Ez-zaouia`}
         style={{
-          display: 'flex',
-          marginBottom: rhythm(1.5),
+          marginRight: rhythm(1 / 2),
+          marginBottom: 0,
+          width: rhythm(2),
+          height: rhythm(2),
+          borderRadius: '50%',
         }}
-      >
-        <img
-          src={profilePic}
-          alt={`Mohamed Ez-zaouia`}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginBottom: 0,
-            width: rhythm(2),
-            height: rhythm(2),
-            borderRadius: '50%',
-          }}
-        />
-        <p style={{ maxWidth: 400, marginBottom: 0 }}>
-          Personal *log by <strong>Mohamed Ez-zaouia</strong>. <br />I study and
-          design teaching and learning technologies for better experiences and
-          outcomes.
-        </p>
-      </div>
-    );
-  }
+      />
+      <p
+        style={{ maxWidth: 400, marginBottom: 0 }}
+        dangerouslySetInnerHTML={{
+          __html: data.site.siteMetadata.description,
+        }}
+      />
+    </div>
+  );
 }
 
 export default Bio;
