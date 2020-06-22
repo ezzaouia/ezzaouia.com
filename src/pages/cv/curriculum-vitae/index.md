@@ -105,3 +105,7 @@ spoiler: Ph.D. Candidate. University of Lyon, Department of Informatics
 
 - <a href="https://perso.liris.cnrs.fr/elise.lavoue/" target="_blank">Elise Lavoué</a>: Associate Professor, LIRIS, iaelyon School of Management, University of Lyon. Email: elise.lavoue at univ-lyon3.fr
 - <a href="https://www.tabard.fr/" target="_blank">Aurélien Tabard</a>: Associate Professor, LIRIS, University of Lyon. Email: aurelien at tabard.fr
+
+## Preprint Resume
+
+<a href="./Mohamed_Ez-zaouia_Resume.pdf" target="_blank">Download a pdf</a>.
