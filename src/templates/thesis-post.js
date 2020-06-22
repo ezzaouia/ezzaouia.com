@@ -144,85 +144,70 @@ class ThesisPostTemplate extends React.Component {
     )}`;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <main>
         <SEO
           lang={lang}
           title={post.frontmatter.title}
           description={post.frontmatter.spoiler}
           slug={post.fields.slug}
         />
-        <main>
-          <article>
-            <header>
-              <h1 style={{ color: 'var(--textTitle)' }}>
-                {post.frontmatter.title}
-              </h1>
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  marginBottom: rhythm(1 / 4),
-                  marginTop: rhythm(-4 / 5),
-                }}
-              >
-                {`Published ${formatPostDate(
-                  post.frontmatter.published,
-                  lang
-                )}`}
-                {` • @${post.frontmatter.at}`}
-                {` • ${post.frontmatter.venue}`}
-                {` • ${formatReadingTime(post.timeToRead)}`}
-                {` • `}
-                <Contributors
-                  team={post.frontmatter.contributors}
-                  style={{ marginLeft: rhythm(1 / 4) }}
-                />
-                {post.frontmatter.note ? (
-                  <p style={{ flexBasis: '100%', height: 0 }}>
-                    <em
-                      dangerouslySetInnerHTML={{
-                        __html: post.frontmatter.note,
-                      }}
-                    />
-                  </p>
-                ) : null}
-              </div>
+        <article>
+          <header>
+            <h1 style={{ color: 'var(--textTitle)' }}>
+              {post.frontmatter.title}
+            </h1>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                marginBottom: rhythm(1 / 4),
+                marginTop: rhythm(-4 / 5),
+              }}
+            >
+              {`Published ${formatPostDate(post.frontmatter.published, lang)}`}
+              {` • @${post.frontmatter.at}`}
+              {` • ${post.frontmatter.venue}`}
+              {` • ${formatReadingTime(post.timeToRead)}`}
+              {` • `}
+              <Contributors
+                team={post.frontmatter.contributors}
+                style={{ marginLeft: rhythm(1 / 4) }}
+              />
+              {post.frontmatter.note ? (
+                <p style={{ flexBasis: '100%', height: 0 }}>
+                  <em
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.note,
+                    }}
+                  />
+                </p>
+              ) : null}
+            </div>
 
-              {translations.length > 0 && (
-                <Translations
-                  translations={translations}
-                  editUrl={editUrl}
-                  languageLink={languageLink}
-                  lang={lang}
-                />
-              )}
-            </header>
-            <div dangerouslySetInnerHTML={{ __html: html }} />
-            <footer>
-              <p>
-                <a href={discussUrl} target="_blank" rel="noopener noreferrer">
-                  Discuss on Twitter
-                </a>
-                {` • `}
-                <a href={editUrl} target="_blank" rel="noopener noreferrer">
-                  Edit on GitHub
-                </a>
-              </p>
-            </footer>
-          </article>
-        </main>
+            {translations.length > 0 && (
+              <Translations
+                translations={translations}
+                editUrl={editUrl}
+                languageLink={languageLink}
+                lang={lang}
+              />
+            )}
+          </header>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <footer>
+            <p>
+              <a href={discussUrl} target="_blank" rel="noopener noreferrer">
+                Discuss on Twitter
+              </a>
+              {` • `}
+              <a href={editUrl} target="_blank" rel="noopener noreferrer">
+                Edit on GitHub
+              </a>
+            </p>
+          </footer>
+        </article>
         <aside>
-          <div
-            style={{
-              margin: '90px 0 40px 0',
-              fontFamily: systemFont,
-            }}
-          >
-            <Signup />
-          </div>
-          <Brand style={{ marginBottom: rhythm(1) }} />
-          <Bio />
           <nav>
             <ul
               style={{
@@ -254,7 +239,7 @@ class ThesisPostTemplate extends React.Component {
             </ul>
           </nav>
         </aside>
-      </Layout>
+      </main>
     );
   }
 }

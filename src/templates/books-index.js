@@ -18,60 +18,54 @@ class BooksIndexTemplate extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <main>
         <SEO />
-        {/* <aside>
-          <Bio />
-        </aside> */}
-        <main>
-          {langKey !== 'en' && (
-            <Panel>
-              These articles have been{' '}
-              <a
-                href="https://github.com/ezzaouia/ezzaouia.com#contributing-translations"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                translated by the community
-              </a>
-              .
-            </Panel>
-          )}
+        {langKey !== 'en' && (
+          <Panel>
+            These articles have been{' '}
+            <a
+              href="https://github.com/ezzaouia/ezzaouia.com#contributing-translations"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              translated by the community
+            </a>
+            .
+          </Panel>
+        )}
 
-          {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug;
-            return (
-              <article key={node.fields.slug}>
-                <header>
-                  <h3
-                    style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontSize: rhythm(1),
-                      marginBottom: rhythm(1 / 4),
-                    }}
+        {posts.map(({ node }) => {
+          const title = get(node, 'frontmatter.title') || node.fields.slug;
+          return (
+            <article key={node.fields.slug}>
+              <header>
+                <h3
+                  style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: rhythm(1),
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
+                  <Link
+                    style={{ boxShadow: 'none' }}
+                    to={node.fields.slug}
+                    rel="bookmark"
                   >
-                    <Link
-                      style={{ boxShadow: 'none' }}
-                      to={node.fields.slug}
-                      rel="bookmark"
-                    >
-                      {title}
-                    </Link>
-                  </h3>
-                  <small>
-                    {formatPostDate(node.frontmatter.date, langKey)}
-                    {` • ${formatReadingTime(node.timeToRead)}`}
-                  </small>
-                </header>
-                <p
-                  dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
-                />
-              </article>
-            );
-          })}
-        </main>
-        <Footer />
-      </Layout>
+                    {title}
+                  </Link>
+                </h3>
+                <small>
+                  {formatPostDate(node.frontmatter.date, langKey)}
+                  {` • ${formatReadingTime(node.timeToRead)}`}
+                </small>
+              </header>
+              <p
+                dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
+              />
+            </article>
+          );
+        })}
+      </main>
     );
   }
 }

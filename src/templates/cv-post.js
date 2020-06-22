@@ -4,7 +4,6 @@ import get from 'lodash/get';
 
 import '../fonts/fonts-post.css';
 import Bio from '../components/Bio';
-import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import Signup from '../components/Signup';
 import Panel from '../components/Panel';
@@ -17,8 +16,6 @@ import {
   replaceAnchorLinksByLanguage,
 } from '../utils/i18n';
 
-const GITHUB_USERNAME = 'gaearon';
-const GITHUB_REPO_NAME = 'overreacted.io';
 const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif`;
@@ -94,7 +91,10 @@ class Translations extends React.Component {
 class CvPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const { title: siteTitle, githubReponame, githubUsername, siteUrl } = get(
+      this.props,
+      'data.site.siteMetadata'
+    );
     let {
       previous,
       next,
@@ -132,62 +132,60 @@ class CvPostTemplate extends React.Component {
     // TODO: this curried function is annoying
     const languageLink = createLanguageLink(slug, lang);
     const enSlug = languageLink('en');
-    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
+    const editUrl = `https://github.com/${githubUsername}/${githubReponame}/edit/master/src/pages/${enSlug.slice(
       1,
       enSlug.length - 1
     )}/index${lang === 'en' ? '' : '.' + lang}.md`;
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://overreacted.io${enSlug}`
+      `${siteUrl}${enSlug}`
     )}`;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <main>
         <SEO
           lang={lang}
           title={post.frontmatter.title}
           description={post.frontmatter.spoiler}
           slug={post.fields.slug}
         />
-        <main>
-          <article>
-            <header>
-              <h1 style={{ color: 'var(--textTitle)' }}>
-                {post.frontmatter.title}
-              </h1>
-              <p
-                style={{
-                  ...scale(-1 / 5),
-                  display: 'block',
-                  marginBottom: rhythm(1),
-                  marginTop: rhythm(-4 / 5),
-                }}
-              >
-                {formatPostDate(post.frontmatter.date, lang)}
-                {` • ${formatReadingTime(post.timeToRead)}`}
-              </p>
-              {translations.length > 0 && (
-                <Translations
-                  translations={translations}
-                  editUrl={editUrl}
-                  languageLink={languageLink}
-                  lang={lang}
-                />
-              )}
-            </header>
-            <div dangerouslySetInnerHTML={{ __html: html }} />
-            <footer>
-              <p>
-                <a href={discussUrl} target="_blank" rel="noopener noreferrer">
-                  Discuss on Twitter
-                </a>
-                {` • `}
-                <a href={editUrl} target="_blank" rel="noopener noreferrer">
-                  Edit on GitHub
-                </a>
-              </p>
-            </footer>
-          </article>
-        </main>
+        <article>
+          <header>
+            <h1 style={{ color: 'var(--textTitle)' }}>
+              {post.frontmatter.title}
+            </h1>
+            <p
+              style={{
+                ...scale(-1 / 5),
+                display: 'block',
+                marginBottom: rhythm(1),
+                marginTop: rhythm(-4 / 5),
+              }}
+            >
+              {formatPostDate(post.frontmatter.date, lang)}
+              {` • ${formatReadingTime(post.timeToRead)}`}
+            </p>
+            {translations.length > 0 && (
+              <Translations
+                translations={translations}
+                editUrl={editUrl}
+                languageLink={languageLink}
+                lang={lang}
+              />
+            )}
+          </header>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <footer>
+            <p>
+              <a href={discussUrl} target="_blank" rel="noopener noreferrer">
+                Discuss on Twitter
+              </a>
+              {` • `}
+              <a href={editUrl} target="_blank" rel="noopener noreferrer">
+                Edit on GitHub
+              </a>
+            </p>
+          </footer>
+        </article>
         <aside>
           <div
             style={{
@@ -230,35 +228,9 @@ class CvPostTemplate extends React.Component {
             </ul>
           </nav>
         </aside>
-      </Layout>
+      </main>
     );
   }
 }
 
 export default CvPostTemplate;
-
-// export const pageQuery = graphql`
-//   query query($slug: String!) {
-//     site {
-//       siteMetadata {
-//         title
-//         author
-//       }
-//     }
-//     markdownRemark(fields: { slug: { eq: $slug } }) {
-//       id
-//       html
-//       timeToRead
-//       frontmatter {
-//         title
-//         date(formatString: "MMMM DD, YYYY")
-//         spoiler
-//         cta
-//       }
-//       fields {
-//         slug
-//         langKey
-//       }
-//     }
-//   }
-// `;

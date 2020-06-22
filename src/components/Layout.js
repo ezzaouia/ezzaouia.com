@@ -1,10 +1,11 @@
 import React from 'react';
-import Toggle from './Toggle';
 import Helmet from 'react-helmet';
 
+import Toggle from './Toggle';
 import Brand from './Brand';
-import Navbar from './Navbar';
 import Bio from './Bio';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import { rhythm } from '../utils/typography';
 import sun from '../assets/sun.png';
 import moon from '../assets/moon.png';
@@ -21,7 +22,6 @@ class Layout extends React.Component {
   }
   render() {
     const { children } = this.props;
-
     return (
       <div
         style={{
@@ -94,6 +94,7 @@ class Layout extends React.Component {
             <Navbar location={this.props.location} />
           </aside>
           {children}
+          <Footer />
         </div>
       </div>
     );

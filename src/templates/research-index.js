@@ -19,12 +19,8 @@ class ResearchIndexTemplate extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO />
-        {/* <aside>
-          <Bio />
-        </aside> */}
         <main>
+          <SEO />
           {langKey !== 'en' && (
             <Panel>
               These articles have been{' '}
@@ -105,8 +101,6 @@ class ResearchIndexTemplate extends React.Component {
             );
           })}
         </main>
-        <Footer />
-      </Layout>
     );
   }
 }

@@ -143,14 +143,13 @@ class BioPostTemplate extends React.Component {
     )}`;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          lang={lang}
-          title={post.frontmatter.title}
-          description={post.frontmatter.spoiler}
-          slug={post.fields.slug}
-        />
         <main>
+         <SEO
+            lang={lang}
+            title={post.frontmatter.title}
+            description={post.frontmatter.spoiler}
+            slug={post.fields.slug}
+          />
           <article>
             <header>
               <h1 style={{ color: 'var(--textTitle)' }}>
@@ -189,8 +188,7 @@ class BioPostTemplate extends React.Component {
               </p>
             </footer>
           </article>
-        </main>
-        <aside>
+          <aside>
           <div
             style={{
               margin: '90px 0 40px 0',
@@ -232,7 +230,7 @@ class BioPostTemplate extends React.Component {
             </ul>
           </nav>
         </aside>
-      </Layout>
+        </main>
     );
   }
 }

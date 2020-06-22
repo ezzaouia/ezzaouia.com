@@ -3,24 +3,16 @@ import { Link, graphql } from 'gatsby';
 import get from 'lodash/get';
 
 import '../fonts/fonts-post.css';
-import Bio from '../components/Bio';
-import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import Signup from '../components/Signup';
 import Panel from '../components/Panel';
 import { formatPostDate, formatReadingTime } from '../utils/helpers';
 import { rhythm, scale } from '../utils/typography';
 import {
   codeToLanguage,
   createLanguageLink,
-  loadFontsForCode,
   replaceAnchorLinksByLanguage,
 } from '../utils/i18n';
-import Brand from '../components/Brand';
-import Footer from '../components/Footer';
 
-const GITHUB_USERNAME = 'gaearon';
-const GITHUB_REPO_NAME = 'overreacted.io';
 const systemFont = `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif`;
@@ -96,7 +88,10 @@ class Translations extends React.Component {
 class cvIndexTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const { title: siteTitle, githubReponame, githubUsername, siteUrl } = get(
+      this.props,
+      'data.site.siteMetadata'
+    );
     let {
       previous,
       next,
@@ -134,7 +129,7 @@ class cvIndexTemplate extends React.Component {
     // // TODO: this curried function is annoying
     const languageLink = createLanguageLink(slug, lang);
     const enSlug = languageLink('en');
-    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${enSlug.slice(
+    const editUrl = `https://github.com/${githubUsername}/${githubReponame}/edit/master/src/pages/${enSlug.slice(
       1,
       enSlug.length - 1
     )}/index${lang === 'en' ? '' : '.' + lang}.md`;
@@ -143,14 +138,13 @@ class cvIndexTemplate extends React.Component {
     // )}`;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          lang={lang}
-          title={post.frontmatter.title}
-          description={post.frontmatter.spoiler}
-          slug={post.fields.slug}
-        />
         <main>
+          <SEO
+            lang={lang}
+            title={post.frontmatter.title}
+            description={post.frontmatter.spoiler}
+            slug={post.fields.slug}
+          />
           <article>
             <header>
               <h1 style={{ color: 'var(--textTitle)' }}>
@@ -190,50 +184,6 @@ class cvIndexTemplate extends React.Component {
             </footer>
           </article>
         </main>
-        <aside>
-          {/* <div
-            style={{
-              margin: '90px 0 40px 0',
-              fontFamily: systemFont,
-            }}
-          >
-            <Signup cta={post.frontmatter.cta} />
-          </div> */}
-          <Brand style={{ marginBottom: rhythm(1) }} />
-          <Bio />
-          <Footer />
-          {/* <nav>
-            <ul
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-between',
-                listStyle: 'none',
-                padding: 0,
-              }}
-            >
-              <li>
-                {previous && (
-                  <Link
-                    to={previous.fields.slug}
-                    rel="prev"
-                    style={{ marginRight: 20 }}
-                  >
-                    ← {previous.frontmatter.title}
-                  </Link>
-                )}
-              </li>
-              <li>
-                {next && (
-                  <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                )}
-              </li>
-            </ul>
-          </nav> */}
-        </aside>
-      </Layout>
     );
   }
 }
@@ -246,6 +196,9 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        githubReponame
+        githubUsername
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
