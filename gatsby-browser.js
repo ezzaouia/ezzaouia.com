@@ -5,12 +5,6 @@ import Layout from './src/components/Layout';
 // require("prismjs/themes/prism-solarizedlight.css")
 require('prismjs/plugins/line-numbers/prism-line-numbers.css');
 
-export function  wrapPageElement ({ element, props }) {
-  // props provide same data to Layout as Page element will get
-  // including location, data, etc - you don't need to pass it
-  return <Layout {...props}>{element}</Layout>;
-};
-
 // Forked Gatsby default to not remount on switches between
 // translated versions of the same page.
 export function replaceComponentRenderer({ props, loader }) {

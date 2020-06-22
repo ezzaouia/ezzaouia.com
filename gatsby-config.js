@@ -47,6 +47,12 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-plugin-layout`,
+            options: {
+              component: require.resolve(`./src/components/Layout`),
+            },
+          },
+          {
             resolve: 'gatsby-remark-code-buttons',
             options: {
               buttonText: `Copy`,
