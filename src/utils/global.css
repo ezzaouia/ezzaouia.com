@@ -284,7 +284,6 @@ blockquote cite {
   content: none;
 }
 
-
 @media (max-width: 450px) {
   nav ul li {
     flex-basis: 33%;

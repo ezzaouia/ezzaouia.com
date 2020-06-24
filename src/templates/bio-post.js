@@ -143,52 +143,52 @@ class BioPostTemplate extends React.Component {
     )}`;
 
     return (
-        <main>
-         <SEO
-            lang={lang}
-            title={post.frontmatter.title}
-            description={post.frontmatter.spoiler}
-            slug={post.fields.slug}
-          />
-          <article>
-            <header>
-              <h1 style={{ color: 'var(--textTitle)' }}>
-                {post.frontmatter.title}
-              </h1>
-              <p
-                style={{
-                  ...scale(-1 / 5),
-                  display: 'block',
-                  marginBottom: rhythm(1),
-                  marginTop: rhythm(-4 / 5),
-                }}
-              >
-                {formatPostDate(post.frontmatter.date, lang)}
-                {` • ${formatReadingTime(post.timeToRead)}`}
-              </p>
-              {translations.length > 0 && (
-                <Translations
-                  translations={translations}
-                  editUrl={editUrl}
-                  languageLink={languageLink}
-                  lang={lang}
-                />
-              )}
-            </header>
-            <div dangerouslySetInnerHTML={{ __html: html }} />
-            <footer>
-              <p>
-                <a href={discussUrl} target="_blank" rel="noopener noreferrer">
-                  Discuss on Twitter
-                </a>
-                {` • `}
-                <a href={editUrl} target="_blank" rel="noopener noreferrer">
-                  Edit on GitHub
-                </a>
-              </p>
-            </footer>
-          </article>
-          <aside>
+      <main>
+        <SEO
+          lang={lang}
+          title={post.frontmatter.title}
+          description={post.frontmatter.spoiler}
+          slug={post.fields.slug}
+        />
+        <article>
+          <header>
+            <h1 style={{ color: 'var(--textTitle)' }}>
+              {post.frontmatter.title}
+            </h1>
+            <p
+              style={{
+                ...scale(-1 / 5),
+                display: 'block',
+                marginBottom: rhythm(1),
+                marginTop: rhythm(-4 / 5),
+              }}
+            >
+              {formatPostDate(post.frontmatter.date, lang)}
+              {` • ${formatReadingTime(post.timeToRead)}`}
+            </p>
+            {translations.length > 0 && (
+              <Translations
+                translations={translations}
+                editUrl={editUrl}
+                languageLink={languageLink}
+                lang={lang}
+              />
+            )}
+          </header>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <footer>
+            <p>
+              <a href={discussUrl} target="_blank" rel="noopener noreferrer">
+                Discuss on Twitter
+              </a>
+              {` • `}
+              <a href={editUrl} target="_blank" rel="noopener noreferrer">
+                Edit on GitHub
+              </a>
+            </p>
+          </footer>
+        </article>
+        <aside>
           <div
             style={{
               margin: '90px 0 40px 0',
@@ -230,7 +230,7 @@ class BioPostTemplate extends React.Component {
             </ul>
           </nav>
         </aside>
-        </main>
+      </main>
     );
   }
 }

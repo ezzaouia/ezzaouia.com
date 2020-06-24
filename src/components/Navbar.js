@@ -57,7 +57,7 @@ function Navbar({ location }) {
                     }
                   : {
                       fontSize: rhythm(2 * 0.7),
-                      marginRight: rhythm(0.20),
+                      marginRight: rhythm(0.2),
                       color: 'var(--theme-color)',
                     }
               }

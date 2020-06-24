@@ -19,88 +19,87 @@ class ResearchIndexTemplate extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
-        <main>
-          <SEO />
-          {langKey !== 'en' && (
-            <Panel>
-              These articles have been{' '}
-              <a
-                href="https://github.com/ezzaouia/ezzaouia.com#contributing-translations"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                translated by the community
-              </a>
-              .
-            </Panel>
-          )}
+      <main>
+        <SEO />
+        {langKey !== 'en' && (
+          <Panel>
+            These articles have been{' '}
+            <a
+              href="https://github.com/ezzaouia/ezzaouia.com#contributing-translations"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              translated by the community
+            </a>
+            .
+          </Panel>
+        )}
 
-          <h1>Research Interest</h1>
-          <p>
-            Studying people and collaborating with them to design better ways,
-            methods, technologies, that serve needs, and improve experiences and
-            outcomes of life learning, teaching, and practice; along with
-            distilling the social, pedagogical, and technical underpinnings.
-            Education technologies carry forth an individual's and group's
-            inter-personal characteristics, contingencies, beliefs, feelings,
-            values, behaviors. Such technologies convey experiences, elicit
-            responses, evoke emotions, and catalyze reflections. It is critical
-            to consider the social, pedagogical, and technical ramifications
-            when informing the design and use of teaching and learning
-            technologies.
-          </p>
-          <h1>Current Research</h1>
-          <p>These are the projects that I'm currently focusing on:</p>
-          {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug;
-            return (
-              <article key={node.fields.slug}>
-                <header>
-                  <h3
-                    style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontSize: rhythm(1),
-                      marginBottom: rhythm(1 / 4),
-                    }}
-                  >
-                    <Link
-                      style={{ boxShadow: 'none' }}
-                      to={node.fields.slug}
-                      rel="bookmark"
-                    >
-                      {title}
-                    </Link>
-                  </h3>
-                  <small
-                    style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      alignItems: 'center',
-                      marginBottom: rhythm(1 / 4),
-                    }}
-                  >
-                    Started {formatPostDate(node.frontmatter.date, langKey)}
-                    {` • ${formatReadingTime(node.timeToRead)}`}
-                    {` • #${node.frontmatter.papers} papers`}
-                    {` • `}
-                    <Contributors
-                      team={node.frontmatter.contributors}
-                      style={{ marginLeft: rhythm(1 / 8) }}
-                    />
-                  </small>
-                </header>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description,
+        <h1>Research Interest</h1>
+        <p>
+          Studying people and collaborating with them to design better ways,
+          methods, technologies, that serve needs, and improve experiences and
+          outcomes of life learning, teaching, and practice; along with
+          distilling the social, pedagogical, and technical underpinnings.
+          Education technologies carry forth an individual's and group's
+          inter-personal characteristics, contingencies, beliefs, feelings,
+          values, behaviors. Such technologies convey experiences, elicit
+          responses, evoke emotions, and catalyze reflections. It is critical to
+          consider the social, pedagogical, and technical ramifications when
+          informing the design and use of teaching and learning technologies.
+        </p>
+        <h1>Current Research</h1>
+        <p>These are the projects that I'm currently focusing on:</p>
+        {posts.map(({ node }) => {
+          const title = get(node, 'frontmatter.title') || node.fields.slug;
+          return (
+            <article key={node.fields.slug}>
+              <header>
+                <h3
+                  style={{
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontSize: rhythm(1),
+                    marginBottom: rhythm(1 / 4),
                   }}
-                />
-                <blockquote
-                  dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
-                />
-              </article>
-            );
-          })}
-        </main>
+                >
+                  <Link
+                    style={{ boxShadow: 'none' }}
+                    to={node.fields.slug}
+                    rel="bookmark"
+                  >
+                    {title}
+                  </Link>
+                </h3>
+                <small
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
+                  Started {formatPostDate(node.frontmatter.date, langKey)}
+                  {` • ${formatReadingTime(node.timeToRead)}`}
+                  {` • #${node.frontmatter.papers} papers`}
+                  {` • `}
+                  <Contributors
+                    team={node.frontmatter.contributors}
+                    style={{ marginLeft: rhythm(1 / 8) }}
+                  />
+                </small>
+              </header>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: node.frontmatter.description,
+                }}
+              />
+              <blockquote
+                dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
+              />
+            </article>
+          );
+        })}
+      </main>
     );
   }
 }
