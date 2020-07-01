@@ -92,6 +92,12 @@ module.exports = {
             },
           },
           'gatsby-remark-numbered-footnotes',
+          {
+            resolve: `gatsby-remark-citation`,
+            options: {
+              citation: { format: 'html', template: 'apa', lang: 'en-US' }
+            }
+          },
         ],
       },
     },
