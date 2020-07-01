@@ -4,11 +4,11 @@ date: '2019-06-21'
 spoiler: Weaponizing notebooks using <code class="language-text">R</code> and <code class="language-text">Python</code> together 
 ---
 
-In case you want to use R and Python together using <a href="https://colab.research.google.com/" target="_blank">Google Colab</a>, below are the steps to follow. Please use `pip` rather than `pip3` if you are using `Python2`. 
+In case you want to use R and Python together using <a href="https://colab.research.google.com/">Google Colab</a>, below are the steps to follow. Please use `pip` rather than `pip3` if you are using `Python2`. 
 
-Back in Jun 2019, I have posted a first version of this post on Medium <a href="https://medium.com/@ezzaouia/how-to-use-r-and-python-with-google-colaboratory-notebook-ebc4774d48a" target="_blank">here</a>. Now that I have my personal blog, I thought that it would be a good idea to give my initial a post a refresh here. Also, this will pave the way for my follow up posts focusing on conducting statistical analytics using R and Python.
+Back in Jun 2019, I have posted a first version of this post on Medium <a href="https://medium.com/@ezzaouia/how-to-use-r-and-python-with-google-colaboratory-notebook-ebc4774d48a">here</a>. Now that I have my blog, I thought that it would be a good idea to give it a refresh here. This will pave the way for my follow up posts focusing on conducting statistical analytics using R and Python.
 
-Without delving to much into the details, I just want to address the *why* aspects. One might tell: "R and Python are two different programming language, I can pick up one as I need. *Why bother using R and Python together in the first place?*" My humble answer to this question, is that I normally don't use them together unless there is a good reason to. These are my top three reasons that I find using R and Python together to be useful to me the most:
+Without delving too much into the details, I just want to address the *why* aspects. One might tell: "R and Python are two different programming language, I can pick up one as I need. *Why bother using R and Python together in the first place?*" My humble answer to this question, is that I normally don't use them together unless there is a good reason to. These are my top three reasons that I find using R and Python together to be useful to me the most:
 
 1. ***Complementarity***: Picking up focused library from both languages, such as `numpy`, `pandas`, `scikit-learn`, and such, from *`Python`* and `dplyr`, `ggplot2`, `lme4`, `psych`, and such, from *`R`*
 1. ***Being Task-centric***:  Both languages carry forth a unique approach. `Python`: *programming*-oriented, `R`: *statistical*-oriented, combining them help maintain the focus on the task
