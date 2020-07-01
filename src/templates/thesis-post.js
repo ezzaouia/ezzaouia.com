@@ -165,9 +165,7 @@ class ThesisPostTemplate extends React.Component {
                 marginTop: rhythm(-4 / 5),
               }}
             >
-              {`Published ${formatPostDate(post.frontmatter.published, lang)}`}
-              {` • @${post.frontmatter.at}`}
-              {` • ${post.frontmatter.venue}`}
+              {`Published ${formatPostDate(post.frontmatter.date, lang)}`}
               {` • ${formatReadingTime(post.timeToRead)}`}
               {` • `}
               <Contributors

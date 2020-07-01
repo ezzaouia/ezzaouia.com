@@ -64,9 +64,7 @@ class ThesisIndexTemplate extends React.Component {
                   }}
                 >
                   Published{' '}
-                  {formatPostDate(node.frontmatter.published, langKey)}
-                  {` • @${node.frontmatter.at}`}
-                  {` • ${node.frontmatter.venue}`}
+                  {formatPostDate(node.frontmatter.date, langKey)}
                   {` • ${formatReadingTime(node.timeToRead)}`}
                   {` • `}
                   <Contributors
@@ -75,10 +73,9 @@ class ThesisIndexTemplate extends React.Component {
                   />
                 </small>
               </header>
-              <em
+              <p
                 dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
               />
-              <p dangerouslySetInnerHTML={{ __html: node.frontmatter.paper }} />
             </article>
           );
         })}
