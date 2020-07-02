@@ -62,16 +62,16 @@
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop",
+    "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "build": "gatsby clean && gatsby build",
-    "now-build": "gatsby build",
+    "build": "yarn install-plugins && gatsby clean && gatsby build",
     "deploy": "yarn build",
-    "dry": "yarn build && cp now.json public/ && cd public && now",
-    "js-to-jsx": "node src/utils/js-to-jsx"
+    "js-to-jsx": "node src/utils/js-to-jsx",
+    "install-plugins": "cd ./plugins/gatsby-remark-citation && yarn"
   },
   "husky": {
     "hooks": {
