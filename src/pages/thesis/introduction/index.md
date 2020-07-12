@@ -5,13 +5,14 @@ spoiler: Motivation, Context & Research Approach
 contributors:
   - name: Mohamed Ez-zaouia
     avatar: mohamed
-bibliography: [ ./intro.bib]
+bibliography: [./intro.bib]
 ---
 
 > *The educational marketplace is filled with products promoting learning
 dashboards \[...\]. However, the failure to transition from exciting
 concept demonstrators to embedded practical tools has long dogged
 educational technology*.
+>
 > [@Buckingham2019HCLA, p. 2]
 
 ## Overview
@@ -78,7 +79,16 @@ providing personalized support to learners in a timely
 fashion [@Aslan2019SETA], and providing feedback to
 learners [@Maldonado2015MTFeedback].
 
-
+Recent research, however, underlines the lack of longitudinal research
+examining the design, use, and impact of dashboards on teachers'
+practices in "real-world"
+settings [@Rodriguez2016MonitorAwareReflect; @Schwendimann2017DashReview; @Bodily2018LADashReview].
+From a *design perspective*, Shum et al., argue for a growing
+need for design-based research centered around needs of teachers and
+learners in-situ to best serve pedagogical practices through
+dashboards [@@Buckingham2019HCLA]. Verbert et al., argue the need for leveraging authentic and "richer set of relevant data" sources in education dashboards [@Verbert2014DashboardsReview]. Schwendimann et al., underline the need for examining dedicated designs that go beyond simple logs-driven summarization metrics in dashboards [@Schwendimann2017DashReview]. From an *empirical perspective*, several reviews of more than 150 dashboards underline the need for longitudinal field studies to better understand how teachers appropriate, leverage, and shape their pedagogical practices around dashboards in the long run [@Verbert2014DashboardsReview; @Schwendimann2017DashReview; @Bodily2018LADashReview]. From a *methodological perspective*, much work on teachers' dashboards remains somewhat disjoint. @Buckingham2019HCLA underline the need for
+macro-conceptual implications covering the design space and accounting
+for the interactions between underlying users and stakeholders. Ferguson highlights the importance of triangulating the social, pedagogical, and technical ramifications in the design and use of learning analytical technologies [@Ferguson2012LA].
 
 This dissertation further examines teachers' dashboard design and use
 in-the-wild. Specifically, it provides empirical findings from two
@@ -130,7 +140,7 @@ thesis.](./research-approach.png)
 Figure <a id="intro-fig-approach" href="#intro-fig-approach">1</a>: The methodological, design, and empirical research approach and
 objectives of this
 thesis.
- 
+
 
 We took an iterative mixed research approach and built upon research
 from different fields, including social science, human-computer

@@ -7,18 +7,16 @@ paper: >-
 published: '2017-03-09'
 at: LAK
 venue: Conference
-contributors: 
+contributors:
   - name: Mohamed Ez-zaouia
     avatar: mohamed
   - name: Elise Lavoué
     avatar: elise
+bibliography: [./index.bib]
 ---
 
 > _Not all computers need to pay attention to emotions, or to have emotional abilities. Some machines are useful as rigid tools, and it is fine to keep them that way. However, there are situations where the human-machine interaction could be improved by having machines naturally adapt to their users, and where communication about when, where, how, and how important it is to adapt involves emotional information, possibly including expressions of frustration, confusion, disliking, interest, and more._ <br/>
-> <cite>Picard, 1999</cite>[^Picard] 
-
-[^Picard]:
-  Picard, Rosalind W. (1999). “Affective Computing for HCI.” In: Proceedings of HCI International (the 8th International Conference on Human-Computer Interaction) on Human-Computer Interaction: Ergonomics and User Interfaces-Volume I - Volume I. USA: L. Erlbaum Associates Inc., pp. 829–833. isbn: 0805833919.
+> [@Picard1999AffectiveForHCI]
 
 ## 🖐️ The big picture
 Emotion plays an important role in learning experiences, processes, and outcomes.
@@ -45,30 +43,31 @@ We propose an approach for combining discrete and dimensional emotional cues to 
 ![The architecture of the dashboard build upon the SpeakPlus learning platform.](./emoda-arch.jpg)
 
 ## Highlights
-  
+
 - A case study of using heterogeneous APIs when inferring automated emotional awareness cues of learners' emotions from  audio and video alongside self-reported emotions and contextual users' interaction traces in online/distance learning.
 - A method for unifying discrete and dimensional models of emotions.
 - A qualitative and quantitative exploratory analysis comparing learners' inferred emotions from audio and video.
 
 ## BibTeX Citation
 ```jsx
-@inproceedings{Ezzaouia_LAK2017_Emoda,
-  title = "EMODA: A Tutor Oriented Multimodal and Contextual Emotional Dashboard",
-  booktitle = "Proceedings of the Seventh International Learning Analytics \& Knowledge Conference",
-  author = "Ez-zaouia, Mohamed and Lavou{\'e}, Elise",
-  year = "2017",
-  pages = "429--438",
-  publisher = "ACM",
-  address = "Vancouver, British Columbia, Canada",
-  doi = "10.1145/3027385.3027434",
-  acmid = "3027434",
-  isbn = {978-1-4503-4870-6},
-  keywords = "emotions, interactive visualizations, language training, learner monitoring,multimodal data, tutor dashboard",
-  numpages = "10",
-  series = "LAK '17"
+@inproceedings{Ezzaouia2017Emoda,
+	series = {LAK '17},
+	journal = {Proceedings of the Seventh International Learning Analytics &Knowledge Conference},
+	doi = {10.1145/3027385.3027434},
+	isbn = {978-1-4503-4870-6},
+	numpages = {10},
+	publisher = {ACM},
+	address = {Vancouver, British Columbia, Canada},
+	title = {{{EMODA}}: {{A}} Tutor Oriented Multimodal and Contextual Emotional Dashboard},
+	author = {Ez-zaouia, Mohamed and Lavoué, Elise},
+	pages = {429--438},
+	date = {2017},
+	year = {2017},
 }
 ```
 
 ## Preprint Paper
 EMODA: A Tutor Oriented Multimodal and Contextual Emotional Dashboard.
 <a href="./Ezzaouia_LAK2017_Emoda.pdf" target="_blank">Download a pdf</a>.
+
+@@bibliography

@@ -7,20 +7,18 @@ paper: >-
 published: '2020-02-08'
 at: IJHCS
 venue: Journal
-contributors: 
+contributors:
   - name: Mohamed Ez-zaouia
     avatar: mohamed
   - name: Aurélien Tabard
     avatar: aurelien
   - name: Elise Lavoué
     avatar: elise
+bibliography: [./index.bib]
 ---
 
 > _A teacher who recognizes an individual student’s emotions, understands the cognitive appraisals that may be associated with these emotions, and how these cognitions and emotions motivate the student’s behavior can effectively respond to the student’s individual needs._ <br/>
-> <cite>Jennings and Greenberg, 2009, p. 493[^Jennings]</cite>
-
-[^Jennings]:
-  Jennings, Patricia A and Mark T Greenberg (2009). “The prosocial classroom: Teacher social and emotional competence in relation to student and classroom outcomes.” In: Review of educational research 79.1, pp. 491–525 
+> [@Jennings2009Prosocial, p. 493]
 
 ## 🖐️ The big picture
 This paper is a follow up to [our paper](/papers/multimodal-emotions-awareness-in-online-learning/) on multimodal emotions awareness. Emotional awareness plays an important role in multiple parts of learning settings. However, they are harder to develop in video-conferencing environments due to technology-mediated interactions, technical challenges, and teachers’ main focus on properly conducting learning activities.
@@ -45,16 +43,16 @@ Visualizing learners’ emotions led to an increase in teachers self-awareness a
 ## BibTeX Citation
 ```jsx
 @article{Ezzaouia_IJHCS2020_Emodash,
-    title = "Emodash: A dashboard supporting retrospective awareness of emotions in online learning",
-    journal = "International Journal of Human-Computer Studies",
-    volume = "139",
-    pages = "15",
-    year = "2020",
-    issn = "1071-5819",
-    doi = "https://doi.org/10.1016/j.ijhcs.2020.102411",
-    url = "http://www.sciencedirect.com/science/article/pii/S1071581918305585",
-    author = "Ez-zaouia, Mohamed and Tabard, Aur{\'e}lien and Lavou{\'e}, Elise",
-    keywords = "Visualization, Dashboard, Awareness, Emotion, Online learning, Feedback"
+	journal = {International Journal of Human-Computer Studies},
+	doi = {https://doi.org/10.1016/j.ijhcs.2020.102411},
+	issn = {1071-5819},
+	title = {Emodash: A dashboard supporting retrospective awareness of emotions in online learning},
+	url = {http://www.sciencedirect.com/science/article/pii/S1071581918305585},
+	volume = {139},
+	author = {Ez-zaouia, Mohamed and Tabard, Aurélien and Lavoué, Elise},
+	pages = {102411},
+	date = {2020},
+	year = {2020},
 }
 ```
 
@@ -62,3 +60,5 @@ Visualizing learners’ emotions led to an increase in teachers self-awareness a
 
 Emodash: a Dashboard Supporting Retrospective Awareness of Emotions in Online Learning.
 <a href="./Ezzaouia_IJHCS2020_Emodash.pdf" target="_blank">Download a pdf</a>.
+
+@@bibliography
